@@ -1,12 +1,12 @@
 #ifndef Queuebyme
 #define Queuebyme
 
-namespace stdVahe{
-
 #include <iostream>
 #include <stdexcept>
 #include <vector>
 #include <cmath>
+
+namespace stdVahe{
 
 class queue
 {

@@ -1,10 +1,10 @@
 #ifndef stackbyme
 #define stackbyme
 
-namespace stdVahe{
-
 #include <iostream>
 #include <vector>
+
+namespace stdVahe{
 
 class stack
 {

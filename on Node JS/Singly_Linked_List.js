@@ -55,20 +55,4 @@ class SinglyLinkedList
             console.log(tmp.data);
         }
     }
-    // this function designed for "spoiled" Singly Linked List
-    findcircle ()
-    {
-        var a = this.head;
-        var b = this.head.next;
-        while(b.next !== null)
-        {
-          a.next = null;
-          a = b;
-          b = b.next;
-
-        }
-
-        console.log("Circle started from " , b.data , " and to " , a.data);
-      }
-
 }
