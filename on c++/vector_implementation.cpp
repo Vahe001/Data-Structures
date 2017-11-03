@@ -26,10 +26,10 @@ void vector::push_back(int val)
             arr[i] = brr[i];
         }
         delete[] brr;
-		arr[++size] = val;
+		arr[size++] = val;
         return;
 	}
-	arr[++size] = val;
+	arr[size++] = val;
 }
 void vector::pop_back()
 {
