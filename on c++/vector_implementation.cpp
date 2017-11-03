@@ -6,7 +6,7 @@ vector::vector()
 	size = 0;
 	arr = new int[max_size];
 }
-int vector::size()
+int vector::Size()
 {
     return size;
 }
@@ -17,7 +17,7 @@ int vector::capacity()
 void vector::push_back(int val)
 {
     if (size == max_size)
-	{
+	  {
         int *brr = arr;
 		max_size *= 2;
 		arr = new int [max_size];
@@ -26,127 +26,114 @@ void vector::push_back(int val)
             arr[i] = brr[i];
         }
         delete[] brr;
-		a[++size] = val;
+		arr[++size] = val;
         return;
 	}
-	a[++size] = val;
+	arr[++size] = val;
 }
 void vector::pop_back()
 {
-     arr[size--] = null;
+     arr[size--] = 0;
 }
 
-void clear()
+void vector::clear()
 {
     for(int i = 0; i < size; ++i)
     {
-        arr[i] = null;
+        arr[i] = 0;
     }
     size = 0;
 }
-void insert(int  t, int x)
+void vector::insert(int  pos, int val)
 {
-	if (m == n)
+	if (size == max_size)
 	{
-		int *b = new int[n];
-		for (int i = 0; i < n; i++)
+        int *brr = arr;
+		max_size *= 2;
+		arr = new int [max_size];
+		for (int i = 0; i < pos; ++i)
 		{
-			b[i] = a[i];
-		}
-		n *= 2;
-		a = new int[n];
-			for (int i = 0; i < t; i++)
+            arr[i] = brr[i];
+        }
+        arr[pos] = val;
+        for (int i = pos; i < size; ++i)
 		{
-			a[i] = b[i];
-		}
-		a[t] = x;
-		for (int i = t + 1; i < n / 2; i++)
-		{
-			a[i] = b[i - 1];
-		}
-		delete[] b;
-		m++;
-	}
-	else
-    {
-
-			//a[t] = x;
-			for (int i = m; i >t; --i)
-			{
-				a[i] = a[i - 1];
-			}
-			a[t] = x;
-			m++;
-		}
-	}
-	void clearunusedmemory()
+            arr[i+1] = brr[i];
+        }
+        delete[] brr;
+        size++;
+        return;
+    }
+	for (int i = size; i > pos; --i)
 	{
-		n = m;
+		arr[i] = arr[i - 1];
 	}
-	int capacity()
+	arr[pos] = val;
+	size++;
+}
+	void vector::clear_unused_memory()
 	{
-		return n;
+		max_size = size;
 	}
-	bool empty()
+	bool vector::empty()
 	{
-		if (m == 0)
-			return false;
-		return true;
+		if (size == 0)
+			return true;
+		return false;
 	}
-	int sumall()
+	int vector::sum_all_items()
 	{
 		int sum = 0;
-		for (int i = 0; i < m; i++)
+		for (int i = 0; i < size; i++)
 		{
-			sum += a[i];
+			sum += arr[i];
 		}
 		return sum;
 	}
-	void deletevalue(int r)
+	void vector::delete_value(int index)
 	{
-		for (int i = r - 1; i < m; i++)
+		for (int i = index-1; i < size; i++)
 		{
-			a[i] = a[i + 1];
+			arr[i] = arr[i + 1];
 		}
-		m--;
+		size--;
 	}
 
 
-	int max()
+	int vector::max_item()
 	{
-		int max = a[0];
-		for (int i = 1; i < m; i++)
+		int max = arr[0];
+		for (int i = 1; i < size; i++)
 		{
-			if (a[i] > max)
+			if (arr[i] > max)
 			{
-				max = a[i];
+				max = arr[i];
 			}
 		}
 		return max;
 	}
-	int min()
+	int vector::min_item()
 	{
-		int min = a[0];
-		for (int i = 1; i < m; i++)
+		int min = arr[0];
+		for (int i = 1; i < size; i++)
 		{
-			if (a[i] < min)
+			if (arr[i] < min)
 			{
-				min = a[i];
+				min = arr[i];
 			}
 		}
 		return min;
 	}
 
-	int  operator [](int  n)
+	int vector::operator [](int  n)
 	{
-		return a[n];
+		return this->arr[n];
 	}
-};
 
-inline void  vektor::out()
+void  vector::out()
 {
-	for (int i = 0; i < m; i++)
+	for (int i = 0; i < size; i++)
 	{
-		cout << a[i] << " ";
+		std::cout << this->arr[i] << " ";
 	}
 }
