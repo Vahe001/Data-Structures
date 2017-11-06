@@ -33,7 +33,8 @@ void vector::push_back(int val)
 }
 void vector::pop_back()
 {
-     arr[size--] = 0;
+     arr[size - 1] = 0;
+     size--;
 }
 
 void vector::clear()
